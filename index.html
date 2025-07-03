@@ -2159,7 +2159,8 @@ html, body {
 
 </style>
 </head>
-<body class="theme-cyberpunk">
+<body>
+  <audio id="clickSound" src="click.mp3" preload="auto"></audio> class="theme-cyberpunk">
 
 
 <!-- Splash Screen -->
@@ -4877,5 +4878,17 @@ html, body {
             });
         }
     </script>
+
+<script>
+  const clickSound = document.getElementById("clickSound");
+  document.addEventListener("click", function (e) {
+    const isInteractive = e.target.closest("button, a, .nav-item, .category-card, .product-card, .variant-item");
+    if (isInteractive) {
+      clickSound.currentTime = 0;
+      clickSound.play().catch(() => {});
+    }
+  });
+</script>
+
 </body>
 </html>
